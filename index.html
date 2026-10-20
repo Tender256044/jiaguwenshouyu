@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="契语——手语识别 × 甲骨文生成系统：用 AI 打通「手语 → 现代汉语 → 甲骨文」的双向文化桥梁。" />
+  <title>契语 · 手语识别 × 甲骨文生成系统</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ 顶部导航 ============ -->
+  <header class="site-header" id="top">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-seal">契</span>
+        <span class="brand-text">契语<small>QI-YU</small></span>
+      </a>
+      <nav class="site-nav" id="siteNav">
+        <a class="nav-link" href="#pipeline">技术路线</a>
+        <a class="nav-link" href="#glyphs">字形库</a>
+        <a class="nav-link" href="#scroll">卜辞演示</a>
+        <a class="nav-link" href="#arch">架构</a>
+        <a class="nav-link" href="#about">关于</a>
+        <a class="btn-gh" href="#" title="GitHub 仓库（待配置）">
+          <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ Hero 区 ============ -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">挑战杯 · 科技创新 &amp; 文化创意</p>
+          <h1 class="hero-title">
+            <span class="hero-title-cn">契<span class="cinnabar">语</span></span>
+            <span class="hero-title-en">QI · YU</span>
+          </h1>
+          <p class="hero-sub">手语识别 <em>×</em> 甲骨文生成系统</p>
+          <p class="hero-tagline">用 AI 打通「手语 → 现代汉语 → 甲骨文」的双向文化桥梁，<br class="br-desk" />让无声之言，落成三千年前的刀刻。</p>
+          <div class="hero-cta">
+            <a class="btn-primary" href="#scroll">开始体验</a>
+            <a class="btn-outline" href="#pipeline">了解技术路线</a>
+          </div>
+        </div>
+        <div class="hero-oracle" aria-hidden="true">
+          <div class="oracle-scroll">
+            <span class="oracle-char">契</span>
+            <span class="oracle-char">语</span>
+            <span class="oracle-char seal-char">卜</span>
+          </div>
+          <div class="oracle-seal">甲</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 定位条 ============ -->
+    <section class="strip">
+      <div class="strip-inner">
+        <div class="strip-item"><strong>2,780 万</strong><span>听力障碍人群的无障碍沟通</span></div>
+        <div class="strip-item"><strong>1,500+</strong><span>已释读甲骨字的活化传承</span></div>
+        <div class="strip-item"><strong>100%</strong><span>受控词表 · 零缺字 · 零幻觉</span></div>
+      </div>
+    </section>
+
+    <!-- ============ 六段式流水线 ============ -->
+    <section class="section pipeline" id="pipeline">
+      <div class="section-head">
+        <h2 class="section-title">六段式流水线</h2>
+        <p class="section-desc">前端只负责采集与渲染，AI 能力收敛为一组 REST 接口，前后端零耦合。</p>
+      </div>
+      <div class="pipe-flow" id="pipeFlow">
+        <div class="pipe-card">
+          <span class="pipe-no">①</span>
+          <h3>采集抽帧</h3>
+          <p>视频 / 摄像头流<br />8–15 fps · 640×640</p>
+          <code>List[frame]</code>
+        </div>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <div class="pipe-card">
+          <span class="pipe-no">②</span>
+          <h3>手部检测</h3>
+          <p>YOLO26-n<br />手部框 + 关键点</p>
+          <code>bbox · kps</code>
+        </div>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <div class="pipe-card">
+          <span class="pipe-no">③</span>
+          <h3>时序分类</h3>
+          <p>BiGRU / Transformer<br />关键点序列 → gloss</p>
+          <code>gloss + conf</code>
+        </div>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <div class="pipe-card">
+          <span class="pipe-no">④</span>
+          <h3>文本生成</h3>
+          <p>规则重排 + LLM 润色<br />手语语序 → 汉语</p>
+          <code>汉语句</code>
+        </div>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <div class="pipe-card">
+          <span class="pipe-no">⑤</span>
+          <h3>甲骨生成</h3>
+          <p>三层映射<br />字库直查 → 部件重组 → 扩散补全</p>
+          <code>SVG[]</code>
+        </div>
+        <div class="pipe-arrow" aria-hidden="true">→</div>
+        <div class="pipe-card pipe-card-accent">
+          <span class="pipe-no">⑥</span>
+          <h3>渲染成卡</h3>
+          <p>竖排右起 · 朱砂 / 墨色<br />卜辞卷轴输出</p>
+          <code>图片卡片</code>
+        </div>
+      </div>
+      <p class="pipe-note">管线说明：一期做「词级识别」，连续打 3–5 个词即可组成一句卜辞，避开连续手语端到端的不确定性。</p>
+    </section>
+
+    <!-- ============ 字形库 ============ -->
+    <section class="section glyphs" id="glyphs">
+      <div class="section-head">
+        <h2 class="section-title">甲骨字形库</h2>
+        <p class="section-desc">词表限定在「≤1500 已释读甲骨字 ∩ 中国手语常用词」，做到零缺字。点击下方字符查看卡片占位。</p>
+      </div>
+
+      <div class="demo-layout">
+        <div class="tab-bar" id="tabBar" role="tablist">
+          <button class="tab active" data-cat="body">人体</button>
+          <button class="tab" data-cat="nature">自然</button>
+          <button class="tab" data-cat="animal">动物</button>
+          <button class="tab" data-cat="number">数字</button>
+          <button class="tab" data-cat="direction">方位</button>
+          <button class="tab" data-cat="action">动作</button>
+        </div>
+
+        <div class="demo-body">
+          <div class="chip-grid" id="chipGrid"><!-- JS 渲染 --></div>
+          <aside class="glyph-card" id="glyphCard">
+            <div class="glyph-card-holder" id="glyphCardHolder">
+              <div class="glyph-svg" id="glyphSvg"></div>
+              <div class="glyph-meta">
+                <div class="glyph-kai" id="glyphKai">—</div>
+                <div class="glyph-pinyin" id="glyphPinyin">pinyin</div>
+                <div class="glyph-mean" id="glyphMean">释义占位</div>
+                <div class="glyph-source" id="glyphSource">source：自建 SVG 字形库（待填充）</div>
+              </div>
+            </div>
+            <p class="glyph-tip">※ 当前为结构占位，正式字形将来自 HWOBC / HUST-OBC 矢量化。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 卜辞卷轴演示 ============ -->
+    <section class="section scroll-demo" id="scroll">
+      <div class="section-head">
+        <h2 class="section-title">卜辞卷轴 · 演示</h2>
+        <p class="section-desc">连续输入 3–5 个手语词，系统按顺序输出一组甲骨字，组成一句卜辞。</p>
+      </div>
+      <div class="scroll-stage">
+        <div class="scroll-paper">
+          <div class="scroll-col scroll-col-r2l" id="scrollCol">
+            <div class="scroll-word" data-char="日"><span class="sc-kai">日</span><span class="sc-obi">◎</span></div>
+            <div class="scroll-word" data-char="出"><span class="sc-kai">出</span><span class="sc-obi">⊃</span></div>
+            <div class="scroll-word" data-char="东"><span class="sc-kai">东</span><span class="sc-obi">𘊱</span></div>
+            <div class="scroll-word" data-char="方"><span class="sc-kai">方</span><span class="sc-obi">□</span></div>
+          </div>
+          <div class="scroll-seal" aria-hidden="true">契语之印</div>
+        </div>
+        <div class="scroll-caption">
+          <p>演示金句：<strong>「日出东方」</strong></p>
+          <p class="muted">（识别输入区为占位，接入模型后这里实时生成）</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 技术栈 ============ -->
+    <section class="section tech" id="tech">
+      <div class="section-head">
+        <h2 class="section-title">技术栈</h2>
+        <p class="section-desc">以下为方案既定技术选型，正式内容待填充。</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card"><h3>检测</h3><p>YOLO26-n（主线）<br />YOLOv8-n（回退）</p><span class="tag">待填充</span></div>
+        <div class="tech-card"><h3>关键点</h3><p>MediaPipe Hands<br />21 点 / 手</p><span class="tag">待填充</span></div>
+        <div class="tech-card"><h3>时序</h3><p>BiGRU / Transformer</p><span class="tag">待填充</span></div>
+        <div class="tech-card"><h3>文本</h3><p>规则 + LLM 润色</p><span class="tag">待填充</span></div>
+        <div class="tech-card"><h3>字形</h3><p>三层映射 + 矢量化</p><span class="tag">待填充</span></div>
+        <div class="tech-card"><h3>部署</h3><p>FastAPI + uni-app</p><span class="tag">待填充</span></div>
+      </div>
+    </section>
+
+    <!-- ============ 架构 ============ -->
+    <section class="section arch" id="arch">
+      <div class="section-head">
+        <h2 class="section-title">部署架构</h2>
+        <p class="section-desc">一期单机 PC 部署，二期剥离为「小程序前台 + GPU 服务器后台」。</p>
+      </div>
+      <div class="arch-flow">
+        <div class="arch-box">前端层<small>小程序 / H5 / PC（只采集 + 渲染）</small></div>
+        <div class="arch-link">JSON / SVG URL</div>
+        <div class="arch-box">服务层<small>FastAPI · 抽帧→检测→分类→文本→甲骨</small></div>
+        <div class="arch-link">SQLite · Redis</div>
+        <div class="arch-box">数据层<small>SVG 字形库 / 映射表 / 模型仓库</small></div>
+      </div>
+      <p class="pipe-note">可剥离的 5 条硬约束：前端零 Python 依赖 · 接口 OpenAPI 契约化 · 模型路径外部化 · 推理层抽象 · 服务无状态。</p>
+    </section>
+
+    <!-- ============ 关于 / CTA ============ -->
+    <section class="section about" id="about">
+      <div class="about-inner">
+        <h2 class="section-title">关于「契语」</h2>
+        <p class="about-text">「契」——甲骨文刻写之意，亦指约定、信物；「语」——手语与语言。项目以受控词表为界，让每一句手语都能稳稳落成一片可考据的甲骨，服务听障沟通，活化冷门绝学。</p>
+        <div class="about-actions">
+          <a class="btn-primary" href="#top">返回顶部</a>
+          <a class="btn-outline" href="#">查看项目仓库</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-seal">契</span>
+        <span>契语 QI-YU · 手语识别 × 甲骨文生成系统</span>
+      </div>
+      <p class="footer-note">本页面为项目官网骨架，内容均为占位。© 2026 契语团队</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

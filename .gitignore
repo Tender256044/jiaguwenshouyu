@@ -1,0 +1,17 @@
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 依赖 / 构建产物（后续若迁移到 uni-app / Vite）
+node_modules/
+dist/
+unpackage/
+
+# 环境与密钥
+.env
+.env.local
+
+# 编辑器
+.vscode/
+.idea/
